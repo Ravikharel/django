@@ -1,55 +1,27 @@
 {% extends "blog/base.html" %}
-{% load static %}
-
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-<div class="post-container">
-    <article class="post-detail">
-        <h1 class="post-title">{{ post.title }}</h1>
-        
-        <div class="post-meta">
-            <div class="author-info">
-                <img src="{% static 'blog/images/default-avatar.png' %}" alt="{{ post.author.username }}" class="author-avatar">
-                <div>
-                    <span class="author-name">{{ post.author.username }}</span>
-                    <span class="post-date">{{ post.publish|date:"M d, Y" }} · {{ post.read_time }} min read</span>
-                </div>
-            </div>
-            <button class="follow-button">Follow</button>
-        </div>
-        
-        {% if post.image %}
-        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-featured-image">
-        {% endif %}
-        
-        <div class="post-content">
-            {{ post.body|linebreaks }}
-        </div>
-        
-        <div class="post-actions">
-            <button class="clap-button">👏 <span>24</span></button>
-            <button class="bookmark-button">🔖</button>
-            <button class="share-button">Share</button>
-        </div>
-    </article>
-
-    <aside class="sidebar">
-        <div class="sidebar-section">
-            <h3>The Medium Blog</h3>
-            <p>The official source of news and updates about Medium</p>
-            <button class="follow-publication">Follow publication</button>
-        </div>
-        
-        <div class="sidebar-section">
-            <h3>More from Medium</h3>
-            {% for related_post in related_posts %}
-            <div class="related-post">
-                <h4><a href="{{ related_post.get_absolute_url }}">{{ related_post.title }}</a></h4>
-                <p>{{ related_post.author.username }} · {{ related_post.publish|date:"M d" }} · {{ related_post.read_time }} min read</p>
-            </div>
-            {% endfor %}
-        </div>
-    </aside>
-</div>
+  <article class="post-detail">
+    {% if post.image %}
+      <img src="{{ post.image.url }}" class="post-detail-image" alt="{{ post.title }}">
+    {% endif %}
+    <h1>{{ post.title }}</h1>
+    <div class="post-body">
+      {{ post.body|linebreaks }}
+    </div>
+  </article>
+  <section class="comments">
+    <h2>Comments</h2>
+    <ul>
+      {% for comment in comments %}
+        <li>
+          <strong>{{ comment.author }}</strong>: {{ comment.text }}
+        </li>
+      {% empty %}
+        <li>No comments yet. Be the first to comment!</li>
+      {% endfor %}
+    </ul>
+  </section>
+  
 {% endblock %}

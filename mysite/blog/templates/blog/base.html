@@ -1,28 +1,27 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>{% block title %}My Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Medium-like Blog{% endblock %}</title>
-    <link rel="stylesheet" href="{% static "css/blog.css" %}">
+    {% block extra_head %}{% endblock %}
 </head>
 <body>
-    <header>
-        <div class="logo">Medium</div>
-        <div class="search">
-            <input type="text" placeholder="Search">
+    <header class="navbar">
+        <div class="container">
+            <a href="{% url 'blog:list' %}" class="logo">Raviblog</a>
         </div>
-        <a href="#" class="membership-button">Become a member</a>
     </header>
 
-    <main class="main-content">
-        {% block content %}
-        {% endblock %}
+    <main class="main-content container">
+        {% block content %}{% endblock %}
     </main>
 
-    <footer>
-        <p>&copy; {% now "Y" %} Medium-like Blog. All rights reserved.</p>
+    <footer class="footer">
+        <p>&copy; 2025 My Blog. All rights reserved.</p>
     </footer>
 </body>
 </html>

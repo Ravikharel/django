@@ -1,36 +1,17 @@
 {% extends "blog/base.html" %}
-{% load static %}
+{% block title %}All Posts{% endblock %}
 
 {% block content %}
-<div class="post-list-container">
-    <div class="post-list">
-        <h1>Latest</h1>
-        
-        {% for post in posts %}
-        <article class="post-card">
-            {% if post.image %}
-            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-card-image">
-            {% endif %}
-            
-            <div class="post-card-content">
-                <h2><a href="{{ static 'post.get_absolute_url' }}">{{ post.title }}</a></h2>
-                
-                <div class="post-meta">
-                    <img src="{% static 'blog/images/default-avatar.png' %}" alt="{{ post.author.username }}" class="post-author-avatar">
-                    <div>
-                        <span class="post-author">{{ post.author.username }}</span>
-                        <span class="post-date">{{ post.publish|date:"M d, Y" }} · {{ post.read_time }} min read</span>
-                    </div>
-                </div>
-                
-                <p class="post-excerpt">{{ post.body|truncatewords:30 }}</p>
-            </div>
-        </article>
-        {% endfor %}
-    </div>
-
-    <aside class="sidebar">
-        <!-- Your existing sidebar content -->
-    </aside>
-</div>
+  <div class="post-list">
+    {% for post in posts %}
+      <div class="post-preview">
+        {% if post.image %}
+          <img src="{{ post.image.url }}" class="post-thumbnail" alt="{{ post.title }}">
+        {% endif %}
+        <h2><a href="{% url 'blog:detail' post.pk %}">{{ post.title }}</a></h2>
+        <p>{{ post.body|truncatewords:30 }}</p>
+        <a href="{% url 'blog:detail' post.pk %}" class="read-more">Read More →</a>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}
