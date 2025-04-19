@@ -1,22 +1,28 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>{% block title %}{% endblock %}</title>
-  <link href="{% static "css/blog.css" %}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Medium-like Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/blog.css" %}">
 </head>
 <body>
-  <div id="content">
-    {% block content %}
-    {% endblock %}
-  </div>
+    <header>
+        <div class="logo">Medium</div>
+        <div class="search">
+            <input type="text" placeholder="Search">
+        </div>
+        <a href="#" class="membership-button">Become a member</a>
+    </header>
 
-  <div id="sidebar">
-    <h2>My blog</h2>
-    <p>This is my blog.</p>
-  </div>
-  <div>
-    <img src="https://marvel-b1-cdn.bc0a.com/f00000000236551/dt-cdn.net/wp-content/uploads/2021/07/13429_ILL_DevOpsLoop.png" alt="">
-  </div>
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {% now "Y" %} Medium-like Blog. All rights reserved.</p>
+    </footer>
 </body>
 </html>

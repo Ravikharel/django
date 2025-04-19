@@ -1,97 +1,147 @@
-body { 
-    margin:0;
-    padding:0;
-    font-family:helvetica, sans-serif; 
+/* Add these new styles to your existing CSS */
+
+.post-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-a { 
-    color:#00abff;
-    text-decoration:none; 
+.post-detail {
+    flex: 2;
+    margin-right: 40px;
+    max-width: 720px;
 }
 
-h1 { 
-    font-weight:normal;
-    border-bottom:1px solid #bbb;
-    padding:0 0 10px 0;
+.author-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-h2 {
-    font-weight:normal;
-    margin:30px 0 0;
+.author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
 }
 
-#content { 
-    float:left;
-    width:60%;
-    padding:0 0 0 30px; 
+.author-name {
+    font-weight: 600;
+    display: block;
 }
 
-#sidebar { 
-    float:right;
-    width:30%;
-    padding:10px;
-    background:#efefef; 
-    height:100%;
+.post-date {
+    color: #666;
+    font-size: 14px;
 }
 
-p.date { 
-    color:#ccc;
-    font-family: georgia, serif;
-    font-size: 12px;
-    font-style: italic; 
+.post-featured-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 20px 0;
 }
 
-.left {
-    float:left;
-    margin-right:10px;
+.post-content {
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 30px 0;
 }
 
-/* pagination */
-.pagination { 
-    margin:40px 0; 
-    font-weight:bold;
+.post-actions {
+    display: flex;
+    gap: 15px;
+    margin: 40px 0;
 }
 
-/* forms */
-label { 
-    float:left;
-    clear:both;
-    color:#333;
-    margin-bottom:4px; 
-}
-input, textarea { 
-    clear:both;
-    float:left;
-    margin:0 0 10px;
-    background:#ededed;
-    border:0;
-    padding:6px 10px;
-    font-size:12px;
-}
-input[type=submit] {
-    font-weight:bold;
-    background:#00abff;
-    color:#fff;
-    padding:10px 20px;
-    font-size:14px;
-    text-transform:uppercase; 
-}
-.errorlist { 
-    color:#cc0033;
-    float:left;
-    clear:both;
-    padding-left:10px; 
+.clap-button, .bookmark-button, .share-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-/* comments */
-.comment {
-    padding:10px;
+.sidebar {
+    flex: 1;
+    max-width: 300px;
 }
-.comment:nth-child(even) {
-    background:#efefef;
+
+.related-post {
+    margin-bottom: 20px;
 }
-.comment .info {
-    font-weight:bold;
-    font-size:12px;
-    color:#666;
+
+.related-post h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.related-post p {
+    font-size: 14px;
+    color: #666;
+}
+
+.follow-button, .follow-publication {
+    background-color: #f2f2f2;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.post-list-container {
+    display: flex;
+}
+
+.post-card {
+    margin-bottom: 40px;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 30px;
+}
+
+.post-card-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.post-card-content {
+    padding: 0 10px;
+}
+
+.post-author-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.post-author {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.post-date {
+    color: #666;
+    font-size: 14px;
+}
+
+.post-excerpt {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
 }
